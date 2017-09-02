@@ -10,12 +10,18 @@ public final class LadderRole extends SquareRole {
 	}
 
 	@Override
-	public Square landHereOrGoHome() {
+	public Square landHereOrGoHome(int moves) {
 		System.out.println("Ladder from " + (square.getPosition()) + " to " + (destination().getPosition()));
-		return destination().landHereOrGoHome();
+		return destination().landHereOrGoHome(moves);
 	}
 
 	private Square destination() {
 		return square.findRelativeSquare(transport);
+	}
+	
+	@Override
+	public String getSquareName()
+	{
+		return "Ladder";
 	}
 }

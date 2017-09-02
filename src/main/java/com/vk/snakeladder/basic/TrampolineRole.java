@@ -16,7 +16,7 @@ public final class TrampolineRole extends SquareRole
 					+ (lastPosition + 1) + " so don ’t move ");
 			return square;
 		} else {
-			System.out.println("Move from " + (square.getPosition()) + " to "
+			System.out.println("Trampoline Move from " + (square.getPosition()) + " to "
 
 					+ (square.findRelativeSquare(moves).getPosition()));
 			return square.findRelativeSquare(moves).landHereOrGoHome(moves);
@@ -36,6 +36,12 @@ public final class TrampolineRole extends SquareRole
 			System.out.println("Trampoline from " + (square.getPosition()) + " to " + square.findRelativeSquare(moves).getPosition());
 			return square.findRelativeSquare(moves);
 		}
+	}
+	
+	@Override
+	public String getSquareName()
+	{
+		return "Trampoline";
 	}
 	
 }

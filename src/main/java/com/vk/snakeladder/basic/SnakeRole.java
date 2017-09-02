@@ -12,16 +12,22 @@ public final class SnakeRole extends SquareRole {
 	}
 
 	@Override
-	public Square landHereOrGoHome() {
+	public Square landHereOrGoHome(int moves) {
 		
 		if ( hungerLevel == 0) return square;
 		
 		hungerLevel = hungerLevel - 1;
 		System.out.println("Snake from " + (square.getPosition()) + " to " + (destination().getPosition()));
-		return destination().landHereOrGoHome();
+		return destination().landHereOrGoHome(moves);
 	}
 
 	private Square destination() {
 		return square.findRelativeSquare(transport);
+	}
+	
+	@Override
+	public String getSquareName()
+	{
+		return "Snake";
 	}
 }

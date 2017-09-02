@@ -3,6 +3,7 @@ package com.vk.snakeladder.basic;
 public abstract class SquareRole {
 	protected Square square = null;
 
+	
 	public SquareRole(Square s) {
 		assert s != null : " Null square for square role ";
 		square = s;
@@ -19,6 +20,11 @@ public abstract class SquareRole {
 	public boolean isLastSquare() {
 		return false;
 	}
+	
+	public String getSquareName()
+	{
+		return square.getRole();
+	}
 
 	public Square moveAndLand(int moves) {
 		int lastPosition = square.findLastSquare().getPosition();
@@ -31,15 +37,16 @@ public abstract class SquareRole {
 			System.out.println("Move from " + (square.getPosition()) + " to "
 
 					+ (square.findRelativeSquare(moves).getPosition()));
-			return square.findRelativeSquare(moves).landHereOrGoHome();
+			return square.findRelativeSquare(moves).landHereOrGoHome(moves);
 		}
 	}
 
-	public Square landHereOrGoHome() {
+	public Square landHereOrGoHome(int moves) 
+	{
 		if (square.isOccupied()) {
 			System.out.println("square " + (square.getPosition()) + " is occupied ");
 		} else {
-			System.out.println("land at " + (square.getPosition()));
+			System.out.println("Land at " + (square.getPosition()));
 		}
 		
 		Square newSquare = square.moveEndIfStartingRow();
@@ -47,12 +54,12 @@ public abstract class SquareRole {
 			return newSquare.isOccupied() ? newSquare.findFirstSquare() : newSquare;
 		else
 			return square.isOccupied() ? square.findFirstSquare() : square;
+		
+			
+		
+		
 	}
 
-	
-	public Square landHereOrGoHome(int moves) {
-		return square;
-	}
 	
 	public Square apply(Player player)
 	{

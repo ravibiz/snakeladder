@@ -16,7 +16,7 @@ public final class ElevatorRole extends SquareRole
 					+ (lastPosition + 1) + " so don ’t move ");
 			return square;
 		} else {
-			System.out.println("Move from " + (square.getPosition()) + " to "
+			System.out.println("Elevator Move from " + (square.getPosition()) + " to "
 
 					+ (square.findRelativeSquare(moves).getPosition()));
 			return square.findRelativeSquare(moves).landHereOrGoHome(moves);
@@ -35,8 +35,14 @@ public final class ElevatorRole extends SquareRole
 			return square;
 		} else {
 			System.out.println("Elevator from " + (square.getPosition()) + " to " + square.findRelativeSquare((newposition - presentPosition)).getPosition());
-			return square.findRelativeSquare( (newposition - presentPosition) );
+			return square.findRelativeSquare( (newposition - presentPosition) ).landHereOrGoHome(moves);
 		}
+	}
+	
+	@Override
+	public String getSquareName()
+	{
+		return "Elevator";
 	}
 	
 }

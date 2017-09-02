@@ -1,5 +1,7 @@
 package com.vk.snakeladder.basic;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -63,13 +65,49 @@ public final class Game
 		startGame();
 
 		System.out.println("Initial state : \n" + this);
-		while (notOver()) {
-			int roll = Die.roll();
-			System.out.println("Current player is " + currentPlayer() + " and rolls " + roll);
-			movePlayer(roll);
-			System.out.println("State : \n" + this);
+		
+		while(true)
+		{
+			try
+			{
+				
+				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		        System.out.print("Enter Dice values for players first:second");
+		        String diceStr = br.readLine();
+		        try
+		        {
+		        	 String [] diveV = diceStr.trim().split(",");
+		        	 
+		        	 int first = Integer.parseInt(diveV[0]);
+		        	 int second = Integer.parseInt(diveV[1]);
+		            
+		            if ( notOver())
+		            {
+		            	System.out.println("Rolls for first and second " + first + ":" + second);
+		    			movePlayer(first);
+		    			movePlayer(second);
+		    			System.out.println("State : \n" + this);
+		            }
+		            else
+		            {
+		            	break;
+		            }
+		            
+		        }catch(NumberFormatException nfe){
+		            System.err.println("Invalid Format!");
+		        }
+		        
+					
+				
+			}
+			catch(Exception e)
+			{
+				
+			}
 		}
-		System.out.println(winner + " has won.");
+		
+		
+		//System.out.println(winner + " has won.");
 	}
 
 	private void startGame() {
@@ -83,6 +121,11 @@ public final class Game
 		}
 	}
 
+	private void printConstruct(int pos)
+	{
+		System.out.println(board.getConstruct(pos));
+	}
+	
 	private boolean notOver() {
 		return winner == null;
 	}

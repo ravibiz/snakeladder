@@ -7,7 +7,7 @@ public final class Main {
 	public static void main(String[] args) 
 	{
 		String[] playerNames = { "Kumar", "John"};
-		int playerEnegry = 10;
+		int playerEnegry = 21;
 		
 		int numSquares = 64;
 		

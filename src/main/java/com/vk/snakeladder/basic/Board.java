@@ -129,4 +129,18 @@ public final class Board {
 			pitStopSquare.setSquareRole(new PitStopRole(pitStopSquare, pitStop.getEnergy()));
 		}
 	}
+	public String getConstruct(int pos)
+	{
+		Square sq = squares.get(pos -1);
+		return sq.getRole();
+	}
+	
+	public void printallSqRoles()
+	{
+		for (Square sq : squares)
+		{
+			System.out.println("pos:" + sq.getPosition() + ":" + sq.getSquareRole().getClass().getName() );
+		}
+	}
+	
 }

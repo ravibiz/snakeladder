@@ -32,5 +32,9 @@ public final class FirstSquareRole extends SquareRole {
 		return !players.isEmpty();
 	}
 	
-	
+	@Override
+	public String getSquareName()
+	{
+		return "Regular";
+	}
 }

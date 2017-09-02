@@ -10,4 +10,10 @@ public final class LastSquareRole extends SquareRole {
 	public boolean isLastSquare() {
 		return true;
 	}
+	
+	@Override
+	public String getSquareName()
+	{
+		return "Regular";
+	}
 }

@@ -19,4 +19,10 @@ public final class PitStopRole extends SquareRole {
 		System.out.println("PitStop energy gained at " + square.getPosition() + " and total = " + player.getEnergy());
 		return square;
 	}
+	
+	@Override
+	public String getSquareName()
+	{
+		return "PitStop";
+	}
 }

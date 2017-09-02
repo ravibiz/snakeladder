@@ -5,11 +5,16 @@ public class Square {
 	private Player player = null;
 	private int position;
 	private SquareRole squareRole = null;
-
+	
 	public Square(int pos, Board b) {
 		assert pos >= 0 : " Square number must be positive or zero ";
 		position = pos;
 		board = b;
+	}
+	
+	public String getRole()
+	{
+		return squareRole.getSquareName();
 	}
 
 	public Player getPlayer() {
@@ -29,6 +34,11 @@ public class Square {
 		squareRole = sr;
 	}
 
+	public SquareRole getSquareRole()
+	{
+		return squareRole;
+	}
+	
 	public boolean isOccupied() {
 		return squareRole.isOccupied();
 	}
@@ -38,15 +48,10 @@ public class Square {
 	}
 
 	public Square moveAndLand(int moves) {
-		//System.err.println("current position " + position);
 		return squareRole.moveAndLand(moves);
 	}
 
-	public Square landHereOrGoHome() {
-		return squareRole.landHereOrGoHome();
 
-	}
-	
 	public Square landHereOrGoHome(int moves) {
 		return squareRole.landHereOrGoHome(moves);
 

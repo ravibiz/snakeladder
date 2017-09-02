@@ -66,10 +66,21 @@ public final class Player {
 
 	public void moveForward(int moves) {
 		assert moves > 0 : "non - positive moves ";
+		
+		
 		square.leave(this);
 		square = square.moveAndLand(moves);
 		square = square.apply(this);
 		square.enter(this);
 		if (this.energy == 0) square.leave(this);
+		
+		if ( ! square.getRole().equalsIgnoreCase("Regular"))
+		{
+			moveForward(moves);
+		}
+	}
+	
+	public String getConstruct(int pos) {
+		return square.getRole();
 	}
 }
